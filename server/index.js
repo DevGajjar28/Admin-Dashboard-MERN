@@ -12,8 +12,10 @@ const salesRoutes = require('./routes/sales.js');
 
 //data import
 
-const { User } = require("./models/User.js");
-const { dataUser } = require("./data/index.js");
+const User = require("./models/User.js");
+const Product = require("./models/Product.js");
+const ProductStat = require("./models/ProductStat.js");
+const { dataUser, dataProduct, dataProductStat } = require("./data/index.js");
 
 
 // Configrations
@@ -40,6 +42,8 @@ mongoose.connect(process.env.MONGO_URL, {
 }).then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
     //    Only add data one time
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
     // User.insertMany(dataUser);
 
 }).catch((error) => console.log(`${error} didn not find`))
