@@ -15,7 +15,9 @@ const salesRoutes = require('./routes/sales.js');
 const User = require("./models/User.js");
 const Product = require("./models/Product.js");
 const ProductStat = require("./models/ProductStat.js");
-const { dataUser, dataProduct, dataProductStat } = require("./data/index.js");
+const Transaction = require("./models/Transaction.js");
+const OverallStat = require("./models/OverallStat.js")
+const { dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat } = require("./data/index.js");
 
 
 // Configrations
@@ -44,6 +46,8 @@ mongoose.connect(process.env.MONGO_URL, {
     //    Only add data one time
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
+    // Transaction.insertMany(dataTransaction);
+    // OverallStat.insertMany(dataOverallStat);
     // User.insertMany(dataUser);
 
 }).catch((error) => console.log(`${error} didn not find`))
