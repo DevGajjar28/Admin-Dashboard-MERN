@@ -16,19 +16,17 @@ export const tokensDark = {
         1000: "#000000", // manually adjusted
     },
     primary: {
-        // blue
         100: "#d3d4de",
         200: "#a6a9be",
         300: "#7a7f9d",
         400: "#4d547d",
-        500: "#21295c",
-        600: "#191F45", // manually adjusted
-        700: "#141937",
-        800: "#0d1025",
-        900: "#070812",
+        500: "#2F3349", // new primary color
+        600: "#24283a",
+        700: "#1a1d2c",
+        800: "#12131e",
+        900: "#0b0b12",
     },
     secondary: {
-        // yellow
         50: "#f0f0f0", // manually adjusted
         100: "#fff6e0",
         200: "#ffedc2",
@@ -69,7 +67,7 @@ export const themeSettings = (mode) => {
                     // palette values for dark mode
                     primary: {
                         ...tokensDark.primary,
-                        main: tokensDark.primary[400],
+                        main: tokensDark.primary[500],
                         light: tokensDark.primary[400],
                     },
                     secondary: {
@@ -113,26 +111,32 @@ export const themeSettings = (mode) => {
             h1: {
                 fontFamily: ["Inter", "sans-serif"].join(","),
                 fontSize: 40,
+                color: mode === "light" ? tokensDark.grey[900] : tokensDark.grey[0],
             },
             h2: {
                 fontFamily: ["Inter", "sans-serif"].join(","),
                 fontSize: 32,
+                color: mode === "light" ? tokensDark.grey[900] : tokensDark.grey[0],
             },
             h3: {
                 fontFamily: ["Inter", "sans-serif"].join(","),
                 fontSize: 24,
+                color: mode === "light" ? tokensDark.grey[900] : tokensDark.grey[0],
             },
             h4: {
                 fontFamily: ["Inter", "sans-serif"].join(","),
                 fontSize: 20,
+                color: mode === "light" ? tokensDark.grey[900] : tokensDark.grey[0],
             },
             h5: {
                 fontFamily: ["Inter", "sans-serif"].join(","),
                 fontSize: 16,
+                color: mode === "light" ? tokensDark.grey[900] : tokensDark.grey[0],
             },
             h6: {
                 fontFamily: ["Inter", "sans-serif"].join(","),
                 fontSize: 14,
+                color: mode === "light" ? tokensDark.grey[900] : tokensDark.grey[0],
             },
         },
     };

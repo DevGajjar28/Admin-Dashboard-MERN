@@ -31,7 +31,7 @@ const Daily = () => {
     Object.values(dailyData).forEach(({ date, totalSales, totalUnits }) => {
       const dateFormatted = new Date(date);
       if (dateFormatted >= startDate && dateFormatted <= endDate) {
-        const formattedDate = dateFormatted.toISOString().split("T")[0]; // Format to YYYY-MM-DD
+        const formattedDate = dateFormatted.toISOString().split("T")[0];
 
         totalSalesLine.data.push({ x: formattedDate, y: totalSales });
         totalUnitsLine.data.push({ x: formattedDate, y: totalUnits });

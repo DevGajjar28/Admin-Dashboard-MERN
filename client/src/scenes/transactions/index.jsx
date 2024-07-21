@@ -1,6 +1,14 @@
-import { Box, useTheme } from "@mui/material";
+import { Search } from "@mui/icons-material";
+import {
+  Box,
+  IconButton,
+  InputAdornment,
+  TextField,
+  useTheme,
+} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import DataGridCustomToolbar from "components/DataGridCustomToolbar";
+import FlexBetween from "components/FlexBetween";
 import Header from "components/Header";
 import { useState } from "react";
 import { useGetTransactionsQuery } from "state/api";
@@ -11,7 +19,7 @@ const Transactions = () => {
   // values to be sent to the backend
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
-  const [sort, setSort] = useState([]);
+  const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
 
   const [searchInput, setSearchInput] = useState("");
@@ -56,6 +64,30 @@ const Transactions = () => {
   return (
     <Box m="1.5rem 2.5rem">
       <Header title="TRANSACTIONS" subtitle="Entire list of transactions" />
+      <FlexBetween width="100%">
+        <FlexBetween></FlexBetween>
+        <TextField
+          label="Search..."
+          sx={{ mb: "0.5rem", width: "15rem" }}
+          onChange={(e) => setSearchInput(e.target.value)}
+          value={searchInput}
+          variant="standard"
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => {
+                    setSearch(searchInput);
+                    setSearchInput("");
+                  }}
+                >
+                  <Search />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+      </FlexBetween>
       <Box
         height="80vh"
         sx={{
@@ -97,7 +129,7 @@ const Transactions = () => {
           sortingMode="server"
           onPageChange={(newPage) => setPage(newPage)}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          onSortModelChange={(newSortModel) => setSort(newSortModel)}
+          onSortModelChange={(newSortModel) => setSort(...newSortModel)}
           components={{ Toolbar: DataGridCustomToolbar }}
           componentsProps={{
             toolbar: { searchInput, setSearchInput, setSearch },

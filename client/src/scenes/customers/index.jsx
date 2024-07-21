@@ -1,5 +1,6 @@
 import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import Header from "components/Header";
 import { useGetCustomersQuery } from "state/api";
 
 const Customers = () => {
@@ -50,6 +51,8 @@ const Customers = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      <Header title="CUSTOMERS" subtitle="Managing list of Customers" />
+
       <Box
         mt="40px"
         height="75vh"

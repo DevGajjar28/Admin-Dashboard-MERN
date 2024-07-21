@@ -17,10 +17,11 @@ const Product = require("./models/Product.js");
 const ProductStat = require("./models/ProductStat.js");
 const Transaction = require("./models/Transaction.js");
 const OverallStat = require("./models/OverallStat.js")
-const { dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat } = require("./data/index.js");
+const Affiliate = require("./models/AffiliateStat.js");
+const { dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat, dataAffiliateStat } = require("./data/index.js");
 
 
-// Configrations
+// Configrations    
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -48,6 +49,7 @@ mongoose.connect(process.env.MONGO_URL, {
     // ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
     // OverallStat.insertMany(dataOverallStat);
+    // Affiliate.insertMany(dataAffiliateStat);
     // User.insertMany(dataUser);
 
 }).catch((error) => console.log(`${error} didn not find`))

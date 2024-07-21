@@ -12,7 +12,6 @@ import {
   SettingsOutlined,
   ShoppingCartOutlined,
   TodayOutlined,
-  TrendingUpOutlined,
 } from "@mui/icons-material";
 import {
   Box,
@@ -85,10 +84,10 @@ const navItems = [
     text: "Admin",
     icon: <AdminPanelSettingsOutlined />,
   },
-  {
-    text: "Performance",
-    icon: <TrendingUpOutlined />,
-  },
+  // {
+  //   text: "Performance",
+  //   icon: <TrendingUpOutlined />,
+  // },
 ];
 
 const Sidebar = ({
@@ -120,9 +119,15 @@ const Sidebar = ({
             "& .MuiDrawer-paper": {
               color: theme.palette.secondary[200],
               backgroundColor: theme.palette.background.alt,
-              boxSixing: "border-box",
+              boxSizing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
+              // Hide scrollbar
+              "&::-webkit-scrollbar": {
+                display: "none",
+              },
+              msOverflowStyle: "none", // IE and Edge
+              scrollbarWidth: "none", // Firefox
             },
           }}
         >
@@ -221,7 +226,7 @@ const Sidebar = ({
               </Box>
               <SettingsOutlined
                 sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
-              ></SettingsOutlined>
+              />
             </FlexBetween>
           </Box>
         </Drawer>
