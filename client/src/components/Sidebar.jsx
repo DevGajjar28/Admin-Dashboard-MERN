@@ -133,7 +133,7 @@ const Sidebar = ({
                     fontWeight="bold"
                     className="logo-name"
                   >
-                    ECOMVISION
+                    ADMIN
                   </Typography>
                 </Box>
                 {!isNonMobile && (
