@@ -26,10 +26,11 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import profileImage from "../assets/dp.jpg";
 import FlexBetween from "./FlexBetween";
+import Tour from "./Tour";
 
 const navItems = [
   {
@@ -84,10 +85,6 @@ const navItems = [
     text: "Admin",
     icon: <AdminPanelSettingsOutlined />,
   },
-  // {
-  //   text: "Performance",
-  //   icon: <TrendingUpOutlined />,
-  // },
 ];
 
 const Sidebar = ({
@@ -97,17 +94,14 @@ const Sidebar = ({
   setIsSidebarOpen,
   isNonMobile,
 }) => {
-  const { pathname } = useLocation();
   const [active, setActive] = useState("");
+
   const navigate = useNavigate();
   const theme = useTheme();
 
-  useEffect(() => {
-    setActive(pathname.substring(1));
-  }, [pathname]);
-
   return (
     <Box component="nav">
+      <Tour />
       {isSidebarOpen && (
         <Drawer
           open={isSidebarOpen}
@@ -122,12 +116,11 @@ const Sidebar = ({
               boxSizing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
-              // Hide scrollbar
               "&::-webkit-scrollbar": {
                 display: "none",
               },
-              msOverflowStyle: "none", // IE and Edge
-              scrollbarWidth: "none", // Firefox
+              msOverflowStyle: "none",
+              scrollbarWidth: "none",
             },
           }}
         >
@@ -135,7 +128,11 @@ const Sidebar = ({
             <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
-                  <Typography variant="h4" fontWeight="bold">
+                  <Typography
+                    variant="h4"
+                    fontWeight="bold"
+                    className="logo-name"
+                  >
                     ECOMVISION
                   </Typography>
                 </Box>

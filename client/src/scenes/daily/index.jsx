@@ -12,10 +12,13 @@ const Daily = () => {
   const { data } = useGetSalesQuery();
   const theme = useTheme();
 
+  console.log("Raw data:", data);
+
   const formattedData = useMemo(() => {
-    if (!data) return [];
+    if (!data || !data.dailyData) return [];
 
     const { dailyData } = data;
+    console.log("Daily Data:", dailyData);
 
     const totalSalesLine = {
       id: "totalSales",
@@ -29,27 +32,45 @@ const Daily = () => {
     };
 
     Object.values(dailyData).forEach(({ date, totalSales, totalUnits }) => {
+      totalSalesLine.data = [
+        ...totalSalesLine.data,
+        { x: date, y: totalSales },
+      ];
+      totalUnitsLine.data = [
+        ...totalUnitsLine.data,
+        { x: date, y: totalSales },
+      ];
+
       const dateFormatted = new Date(date);
       if (dateFormatted >= startDate && dateFormatted <= endDate) {
-        const formattedDate = dateFormatted.toISOString().split("T")[0];
+        const splitDate = date.substring(date.indexOf("-") + 1);
 
-        totalSalesLine.data.push({ x: formattedDate, y: totalSales });
-        totalUnitsLine.data.push({ x: formattedDate, y: totalUnits });
+        totalSalesLine.data = [
+          ...totalSalesLine.data,
+          { x: splitDate, y: totalSales },
+        ];
+        totalUnitsLine.data = [
+          ...totalUnitsLine.data,
+          { x: splitDate, y: totalUnits },
+        ];
       }
     });
 
+    console.log("Total Sales Line Data:", totalSalesLine.data);
+    console.log("Total Units Line Data:", totalUnitsLine.data);
+
     return [totalSalesLine, totalUnitsLine];
-  }, [data, startDate, endDate, theme.palette.secondary]);
+  }, [data, theme.palette.secondary, startDate, endDate]);
 
   return (
     <Box m="1.5rem 2.5rem">
       <Header title="DAILY SALES" subtitle="Chart of daily sales" />
       <Box height="75vh">
         <Box display="flex" justifyContent="flex-end">
-          <Box mr={2}>
+          <Box>
             <DatePicker
               selected={startDate}
-              onChange={(date) => setStartDate(date || new Date())}
+              onChange={(date) => setStartDate(date)}
               selectsStart
               startDate={startDate}
               endDate={endDate}
@@ -58,7 +79,7 @@ const Daily = () => {
           <Box>
             <DatePicker
               selected={endDate}
-              onChange={(date) => setEndDate(date || new Date())}
+              onChange={(date) => setEndDate(date)}
               selectsEnd
               startDate={startDate}
               endDate={endDate}

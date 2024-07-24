@@ -12800,7 +12800,7 @@ const dataProductStat = [
             { date: "2021-11-17", totalSales: 36, totalUnits: 22 },
         ],
     },
-];
+];  
 
 const dataTransaction = [
     {

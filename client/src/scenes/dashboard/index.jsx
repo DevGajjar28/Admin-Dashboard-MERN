@@ -58,11 +58,17 @@ const Dashboard = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      {/* <Tour /> */}
+      {/* <Button onClick={() => setRun(true)}>Start Tour</Button> */}
       <FlexBetween>
-        <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
-
+        <Header
+          title="DASHBOARD"
+          subtitle="Welcome to your dashboard"
+          className="dashboard-header"
+        />
         <Box>
           <Button
+            className="download-reports-button"
             sx={{
               backgroundColor: theme.palette.secondary.light,
               color: theme.palette.background.alt,
@@ -87,12 +93,12 @@ const Dashboard = () => {
           "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
         }}
       >
-        {/* ROW 1 */}
         <StatBox
           title="Total Customers"
           value={data?.totalCustomers ?? "Loading..."}
           increase="+14%"
           description="Since last month"
+          className="statbox-total-customers"
           icon={
             <Email
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
@@ -104,6 +110,7 @@ const Dashboard = () => {
           value={data?.todayStats?.totalSales ?? "6753"}
           increase="+21%"
           description="Since last month"
+          className="statbox-sales-today"
           icon={
             <PointOfSale
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
@@ -116,6 +123,7 @@ const Dashboard = () => {
           backgroundColor={theme.palette.background.alt}
           p="1rem"
           borderRadius="0.55rem"
+          className="overview-chart"
         >
           <OverViewChart view="sales" isDashboard={true} />
         </Box>
@@ -124,6 +132,7 @@ const Dashboard = () => {
           value={data?.thisMonthStats?.totalSales ?? "Loading..."}
           increase="+5%"
           description="Since last month"
+          className="statbox-monthly-sales"
           icon={
             <PersonAdd
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
@@ -135,6 +144,7 @@ const Dashboard = () => {
           value={data?.yearlySalesTotal ?? "Loading..."}
           increase="+43%"
           description="Since last month"
+          className="statbox-yearly-sales"
           icon={
             <Traffic
               sx={{ color: theme.palette.secondary[300], fontSize: "26px" }}
@@ -142,10 +152,10 @@ const Dashboard = () => {
           }
         />
 
-        {/* ROW 2 */}
         <Box
           gridColumn="span 8"
           gridRow="span 3"
+          className="data-grid"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -185,6 +195,7 @@ const Dashboard = () => {
           backgroundColor={theme.palette.background.alt}
           p="1.5rem"
           borderRadius="0.55rem"
+          className="breakdown-chart"
         >
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
             Sales By Category

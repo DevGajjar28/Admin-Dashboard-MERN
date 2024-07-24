@@ -44,7 +44,10 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
       <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* Left side */}
         <FlexBetween>
-          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          <IconButton
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            className="Nav-menu"
+          >
             <MenuIcon />
           </IconButton>
           <FlexBetween
@@ -53,7 +56,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             gap="3rem"
             p="0.1rem 1.5rem"
           >
-            <InputBase placeholder="search..." />
+            <InputBase placeholder="search..." className="Nav-search" />
             <IconButton>
               <Search />
             </IconButton>
@@ -62,7 +65,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
 
         {/* Right side */}
         <FlexBetween gap="1.5rem">
-          <IconButton onClick={() => dispatch(setMode())}>
+          <IconButton onClick={() => dispatch(setMode())} className="Nav-mode">
             {theme.palette.mode === "dark" ? (
               <DarkModeOutlined sx={{ fontSize: "25px" }} />
             ) : (
@@ -95,6 +98,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               />
               <Box textAlign="left">
                 <Typography
+                  className="Nav-user"
                   fontWeight="bold"
                   fontSize="0.9rem"
                   sx={{ color: theme.palette.secondary[100] }}
