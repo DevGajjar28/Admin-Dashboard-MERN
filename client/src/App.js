@@ -30,6 +30,16 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Products />} />
+            <Route path="/" element={<Customers />} />
+            <Route path="/" element={<Transactions />} />
+            <Route path="/" element={<Geography />} />
+            <Route path="/" element={<Overview />} />
+            <Route path="/" element={<Daily />} />
+            <Route path="/" element={<Monthly />} />
+            <Route path="/" element={<Breakdown />} />
+            <Route path="/" element={<Admin />} />
+
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
             <Route path="/customers" element={<Customers />} />
