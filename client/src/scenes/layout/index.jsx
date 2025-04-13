@@ -14,6 +14,7 @@ const Layout = () => {
 
   return (
     <Box display={isNonMobile ? "flex" : " block"} width="100%" height="100%">
+      <Outlet />
       <Sidebar
         user={data || {}}
         isNonMobile={isNonMobile}

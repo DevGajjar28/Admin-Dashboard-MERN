@@ -13,10 +13,10 @@ import Layout from "scenes/layout";
 import Monthly from "scenes/monthly";
 import Overview from "scenes/overview";
 // import Performance from "scenes/performance";
+import { Navigate } from "react-router-dom";
 import Products from "scenes/products";
 import Transactions from "scenes/transactions";
 import { themeSettings } from "theme";
-
 
 function App() {
 
@@ -29,7 +29,7 @@ function App() {
         <CssBaseline />
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* <Route  element={<Navigate to="/dashboard" replace />} /> */}
+            {/* <Route path="/" element={<Navigate to="/dashboard" replace />} /> */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
             <Route path="/customers" element={<Customers />} />
@@ -40,6 +40,7 @@ function App() {
             <Route path="/monthly" element={<Monthly />} />
             <Route path="/breakdown" element={<Breakdown />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="*" element={<Navigate to="dashboard" replace />} />
             {/* <Route path="/performance" element={<Performance />} /> */}
 
 
