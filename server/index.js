@@ -10,7 +10,8 @@ const generalRoutes = require('./routes/general.js');
 const managementRoutes = require('./routes/management.js');
 const salesRoutes = require('./routes/sales.js');
 
-//data import
+//imports Data
+
 
 const User = require("./models/User.js");
 const Product = require("./models/Product.js");
@@ -37,6 +38,7 @@ app.use('/client', clientRoutes);
 app.use('/general', generalRoutes);
 app.use('/management', managementRoutes);
 app.use('/sales', salesRoutes);
+app.use('/transactions', salesRoutes);
 
 
 // MONGOOSE SETUP //

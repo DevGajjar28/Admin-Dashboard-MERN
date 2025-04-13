@@ -2,7 +2,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from '@mui/material/styles';
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Admin from "scenes/admin";
 import Breakdown from "scenes/breakdown";
 import Customers from "scenes/customers";
@@ -13,10 +13,10 @@ import Layout from "scenes/layout";
 import Monthly from "scenes/monthly";
 import Overview from "scenes/overview";
 // import Performance from "scenes/performance";
-import { Navigate } from "react-router-dom";
 import Products from "scenes/products";
 import Transactions from "scenes/transactions";
 import { themeSettings } from "theme";
+
 
 function App() {
 
@@ -28,8 +28,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
-          <Route path="/" element={<Layout />}>
-            {/* <Route path="/" element={<Navigate to="/dashboard" replace />} /> */}
+          <Route element={<Layout />}>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
             <Route path="/customers" element={<Customers />} />
@@ -40,7 +40,6 @@ function App() {
             <Route path="/monthly" element={<Monthly />} />
             <Route path="/breakdown" element={<Breakdown />} />
             <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<Navigate to="dashboard" replace />} />
             {/* <Route path="/performance" element={<Performance />} /> */}
 
 
