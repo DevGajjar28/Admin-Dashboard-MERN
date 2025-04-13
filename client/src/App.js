@@ -2,7 +2,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from '@mui/material/styles';
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Admin from "scenes/admin";
 import Breakdown from "scenes/breakdown";
 import Customers from "scenes/customers";
@@ -25,7 +25,6 @@ function App() {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -41,12 +40,12 @@ function App() {
 
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
           <Route element={<Layout />}>
-            <Route index element={<Dashboard />} />
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/products" element={<Products />} />
             <Route path="/customers" element={<Customers />} />
@@ -63,7 +62,7 @@ function App() {
           </Route>
         </Routes>
       </ThemeProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
