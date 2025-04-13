@@ -13,7 +13,6 @@ import Layout from "scenes/layout";
 import Monthly from "scenes/monthly";
 import Overview from "scenes/overview";
 // import Performance from "scenes/performance";
-import Products from "scenes/products";
 import Transactions from "scenes/transactions";
 import { themeSettings } from "theme";
 
@@ -31,7 +30,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/products" element={<Products />} />
+            {/* <Route path="/products" element={<Products />} /> */}
             <Route path="/customers" element={<Customers />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/geography" element={<Geography />} />
